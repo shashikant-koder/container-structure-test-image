@@ -1,28 +1,7 @@
 schemaVersion: "2.0.0"
 
-commandTests:
-  - name: "Java version check"
-    command: "which"
-    args: ["java"]
-    expectedOutput: ["/opt/java/openjdk/bin/java"]
-  - name: "JAVA_HOME check"
-    command: "echo"
-    args: ["$JAVA_HOME"]
-    expectedOutput: ["/opt/java/openjdk"]
-  - name: "Java Path check"
-    command: "echo"
-    args: ["$PATH"]
-    expectedOutput: ["/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"]
-  - name: "JAVA VERSION check"
-    command: "bash"
-    args:
-    - -c
-    - |
-        java -version  2>&1 | grep "OpenJDK 64-Bit Server VM AdoptOpenJDK"
-    expectedOutput: [".*OpenJDK 64-Bit Server VM AdoptOpenJDK.*"]   
-metadataTest:
-  env:
-   - key: LANG
-     value: en_US.UTF-8
-   - key: LANGUAGE
-     value: en_US:en
+fileExistenceTests:
+- name: 'Root'
+  path: '/'
+  shouldExist: true
+  
